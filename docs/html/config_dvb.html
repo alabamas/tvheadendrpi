@@ -1,0 +1,174 @@
+<div class="hts-doc-text">
+
+<dl>
+ <dt>General tab</dt>
+  The general tab contains information and some per-adapter global
+  configuration.
+
+ <dl>
+  <dt>Add DVB Network by location...
+  <dd>
+  Pressing this button will popup a window that allows the user to select
+  a DVB network based on location. The adapter will be populated with
+  multiplexes from these networks and immediately start to scan for services.
+
+  <dt>Map DVB services to channels...
+  <dd>
+  Pressing this button will start a process that scans all services on all
+  multiplexes and tries to verify if the service is actually a working
+  TV channel. If so, the channel will be created and mapped to this service.
+  You can start mapping services to channels once all muxes have been 
+  processed. Until then the option will be disabled.
+
+  <dt>Adapter name
+  <dd>
+  You can change the display name for the adapter.
+
+  <dt>Autodetect muxes
+  <dd>
+  The DVB transmissions contains information about other muxes available
+  on the same network. If this checkbox is enabled, Tvheadend will 
+  automatically create new muxes as it receives configuration for them
+  via the DVB networks.
+
+  <dt>Idle scanning
+  <dd>
+  When nothing else happens Tvheadend will continuously rotate among all
+  muxes and tune to them to verify that they are still working. 
+  If your adapter have problems with lots of tuning, try to disable this.
+
+  <dt>Detailed logging
+  <dd>
+  If this is enabled, Tvheadend will log more information related to
+  this specific adapter. You might wanna enable this if you have some
+  kind of issues in order to better diagnose the problems.
+ </dl>
+</dl>
+
+<dl>
+ <dt>Multiplexes tab</dt>
+ All multiplexes on the currently selected adapter are listed and can be
+ edited in a grid. 
+
+ <ul>
+  <li>To edit a cell, double-click on it. After a cell is changed it
+      will flags one of its corner to red to indicated that it has been
+      changed. To commit these changes back to Tvheadend press the 
+      'Save changes' button. In order to change a Checkbox cell you only
+      have to click once in it.
+
+  <li>To delete one or more entries, select the lines (by clicking once on 
+      them), and press the 'Delete selected' button. A popup
+      will ask you to confirm your request. Note, that if you have 
+      automatic mux discovery enabled the mux will probably come back
+      quite soon.
+ </ul>
+
+ The columns have the following functions:
+
+ <dl>
+  <dt>Enabled
+  <dd>Uncheck this if a multiplex is of no interest to you or otherwise
+      temporary broken
+
+  <dt>Network
+  <dd>Network name as given in the DVB stream. Can not be changed
+
+  <dt>Frequency
+  <dd>Center frequency for the mux. Can not be changed
+
+  <dt>Modulation
+  <dd>Information about the modulation used on the mux. Can not be changed
+
+  <dt>Mux id
+  <dd>Unique ID for this mux in the dvb network. Can not be changed
+
+  <dt>Quality
+  <dd>Tvheadend's estimated quality for the mux.
+ </dl>
+</dl>
+
+<dl>
+ <dt>Services tab</dt>
+ All services on the currently selected adapter are listed and can be
+ edited in a grid. 
+
+ <ul>
+  <li>To edit a cell, double-click on it. After a cell is changed it
+      will flags one of its corner to red to indicated that it has been
+      changed. To commit these changes back to Tvheadend press the 
+      'Save changes' button. In order to change a Checkbox cell you only
+      have to click once in it.
+
+  <li>Service can not be deleted since they are directly inherited /
+      discovered from a mux they will reappear in just a few seconds
+      should one delete them.
+ </ul>
+
+ <p>
+ The columns have the following functions:
+
+ <dl>
+  <dt>Enabled
+  <dd>Uncheck this if a service is of no interest to you or otherwise
+      temporary broken
+
+  <dt>Service name
+  <dd>Service name as given in the DVB stream. Can not be changed
+
+  <dt>Channel name
+  <dd>Double-click on this column to map the service to a channel.
+
+  <dt>DVB default charset
+  <dd>
+  According to "ETSI EN 300 468", the default character set for EIT data is
+  ISO6937. Unfortunately, some broadcasters actually use ISO-8859-x encodings
+  but fail to correctly announce it. To fix this you can set the default 
+  charset to use when none is specified by the broadcaster.
+
+  <dt>EIT
+  <dd>Uncheck this if EIT data should not be retreived for this service.
+
+  <dt>Type
+  <dd>Type of service. Can not be changed
+
+  <dt>Provider
+  <dd>Provider as given in the DVB stream. Can not be changed
+
+  <dt>Network
+  <dd>Network name for the mux this service resides on
+
+  <dt>Multiplex
+  <dd>Center frequency for the multiplex this service resides on
+
+  <dt>Information button
+  <dd>Press this to get a popup with more information about the service
+ </dl>
+
+ <p>
+ A word about DVB adapters
+ <p>
+ A DVB adapter represents a piece of hardware attached to the system.
+ DVB receivers with dual tuners will present themselves as two adapters
+ to the Tvheadend application. Tvheadend support DVB-T, DVB-C and DVB-S
+ adapters.
+ <p>
+ There is currently no way of adding a new adapter to Tvheadend when running.
+ If a new adapter is plugged into the system Tvheadend needs to be restarted
+ in order to detect it.
+ <p>
+ If Tvheadend has configuration for an adapter and the adapter is missing
+ upon start-up the configuration will be left untouched in case the adapter
+ will be back in the future. There is currently no way to remove configuration
+ for a no longer present adapter.
+ <p>
+ Warning: Unplugging an DVB adapter (USB, etc) during operation (i.e when
+ Tvheadend is running) can result in deadlocking the kernel USB subsystem,
+ most likely requiring a system restart.
+ <p>
+ Warning2: Suspending a system is (from a USB driver perspective) equivalent
+ to a unplug/insert event. Thus, suspending a system running Tvheadend
+ with USB adapters is not recommended at the moment.
+</dl>
+
+</div>
